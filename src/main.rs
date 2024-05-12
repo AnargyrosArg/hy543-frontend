@@ -171,13 +171,16 @@ impl Dataframe {
         let json = serde_json::to_string(self).expect("couldnt serialize graph");
         //--send the execution graph via a socket
         //create a socket
-        let mut stream = TcpStream::connect("127.0.0.1:8000").unwrap();
+        
+        let communicator_addr ="10.0.19.81:12345";
+
+        let mut stream = TcpStream::connect(communicator_addr).unwrap();
         let msg = json.as_bytes();
         stream.write(msg).unwrap();
     }
 
     fn get_response(&self) {
-        let listener = TcpListener::bind("127.0.0.1:8001").unwrap();
+        let listener = TcpListener::bind("127.0.0.1:12345").unwrap();
         for stream in listener.incoming() {
             let mut stream = stream.unwrap();
 
