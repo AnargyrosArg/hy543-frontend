@@ -172,7 +172,7 @@ impl Dataframe {
         //--send the execution graph via a socket
         //create a socket
         
-        let communicator_addr ="10.0.19.81:65004";
+        let communicator_addr ="node1:65000";
 
         let mut stream = TcpStream::connect(communicator_addr).unwrap();
         let msg = json.as_bytes();
@@ -180,7 +180,8 @@ impl Dataframe {
     }
 
     fn get_response(&self) {
-        let listener = TcpListener::bind("0.0.0.0:65001").unwrap();
+        let client_addr = "0.0.0.0:65001";
+        let listener = TcpListener::bind(client_addr).unwrap();
         for stream in listener.incoming() {
             let mut stream = stream.unwrap();
 
