@@ -206,7 +206,7 @@ fn main() {
 
     //--graph in memory--
     //the graph is vector of operation nodes.
-    dataframe.read("~/dataset.csv".to_string());
+    dataframe.read("/home/ec2-user/dataset.csv".to_string());
     dataframe.select("id name age".to_string());
     dataframe.where_("age > 90".to_string());
     dataframe.where_("name == Joseph".to_string());
