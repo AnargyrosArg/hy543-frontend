@@ -206,12 +206,13 @@ fn main() {
 
     //--graph in memory--
     //the graph is vector of operation nodes.
-    dataframe.read("deniro.csv".to_string());
-    dataframe.select("Year Title".to_string());
-    dataframe.where_("Score > 90".to_string());
-    dataframe.sum("Year".to_string());
-    dataframe.sum("Year".to_string());
-    dataframe.sum("Score".to_string());
+    dataframe.read("~/dataset.csv".to_string());
+    dataframe.select("id name age".to_string());
+    dataframe.where_("age > 90".to_string());
+    dataframe.where_("name == Joseph".to_string());
+    dataframe.sum("age".to_string());
+    dataframe.count();
+
     // dataframe.fetch();
     dataframe.count();
 }
