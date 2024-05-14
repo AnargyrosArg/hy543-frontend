@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 
 use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
+use std::time::Instant;
 
 //let's say a dataframe
 #[derive(Serialize, Deserialize, Debug)]
@@ -203,6 +204,7 @@ fn main() {
     let mut dataframe = Dataframe::new();
 
     //filename
+    let now = Instant::now();
 
     //--graph in memory--
     //the graph is vector of operation nodes.
@@ -215,4 +217,6 @@ fn main() {
 
     // dataframe.fetch();
     dataframe.count();
+    let elapsed = now.elapsed();
+    println!("Elapsed: {:.2?}",elapsed);
 }
