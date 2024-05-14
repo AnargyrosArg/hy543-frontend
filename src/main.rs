@@ -206,17 +206,13 @@ fn main() {
     //filename
     let now = Instant::now();
 
-    //--graph in memory--
-    //the graph is vector of operation nodes.
     dataframe.read("/home/ec2-user/dataset.csv".to_string());
     dataframe.select("id name age".to_string());
-    dataframe.where_("age > 90".to_string());
-    dataframe.where_("name == Joseph".to_string());
-    dataframe.sum("age".to_string());
+    dataframe.where_("age > 40".to_string());
+    dataframe.where_("age < 100".to_string());
+    dataframe.where_("id > 120".to_string());
     dataframe.count();
 
-    // dataframe.fetch();
-    dataframe.count();
     let elapsed = now.elapsed();
     println!("Elapsed: {:.2?}",elapsed);
 }
