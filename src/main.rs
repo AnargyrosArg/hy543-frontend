@@ -206,11 +206,9 @@ fn main() {
     //filename
     let now = Instant::now();
 
-    dataframe.read("/home/ec2-user/dataset.csv".to_string());
-    dataframe.select("id name age".to_string());
-    dataframe.where_("age > 40".to_string());
-    dataframe.where_("age < 100".to_string());
-    dataframe.where_("id > 120".to_string());
+    dataframe.read("deniro.csv".to_string());
+    dataframe.count();
+    dataframe.where_("Score > 90".to_string());
     dataframe.count();
 
     let elapsed = now.elapsed();
